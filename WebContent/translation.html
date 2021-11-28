@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>诺亚翻译</title>
+<script src="./Jquery/jquery-3.5.1.js"></script>
+<script src="./javascript/clickheart.js"></script>
+<script>
+function Sub(obj){
+	
+	var content = $("#content").val();
+	var choice = $("select").val();
+	var url = "Trans?content="+content+"&choice="+choice;
+	if(choice != "a"){
+		url = encodeURI(url);//进行UTF-8编码，使传过去的中文不会变成乱码！！！
+	}
+	$.get(url,function(data){
+		alert("点击成功");
+		$("#output").html(data);
+	});
+
+}
+</script>
+<style>
+	ul{
+	  	list-style-type: none;
+	  	margin: 0;
+	  	padding: 0;
+	  	overflow: hidden;
+	  	background-color: #333;
+	}
+	
+	li {
+	  float: left;
+	  border-right:1px solid #bbb;
+	}
+	
+	li:last-child {
+	  float:right;
+	  border-right: none;
+	}
+	
+	li a {
+	  display: block;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	li a:hover:not(.active) {
+	  background-color: #111;
+	}
+	
+	.active {
+	  background-color: #4CAF50;
+	}
+	textarea{
+		border-radius:2px;
+	}
+	#input{
+		margin-top:20px;
+		margin-left:140px;
+		float:left;
+	}
+	#content{
+		font-size:20px;
+		height:310px;
+		width:600px;
+		color:#555555;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	#output{
+	
+		font-size:20px;
+		border-radius:2px;
+		margin-top:20px;
+		margin-right:140px;
+		float:right;
+		height:315px;
+		width:550px;
+		border:1px solid black;
+		border-radius:2px;
+		background-color:#E8E8E8;
+		color:#555555;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	#sub{
+		border:1px solid white;
+		background-color:grey;
+		cursor:pointer;
+		float:right;
+		position:relative;
+		width:100px;
+		height:30px;
+		text-align:center;
+		border-radius:2px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		
+	}
+	select{
+		width:100px;
+		height:30px;
+	}
+</style>
+</head>
+<body>
+	<div class='navigation'>
+		<ul>
+			<li><a href="index.html" >诺亚词典</a></li>
+			<li><a href="translation.html" class="active">诺亚翻译</a></li>
+			<li><a href='friend.jsp'>朋友圈</a></li>
+			<li><a href='#'>关于我们</a></li>
+		</ul>
+	</div> 
+	<div id="input">
+		<form method="get">
+			<textarea placeholder="请输入你要翻译的内容" rows="20" cols="60" id="content" name="content" >
+			</textarea><br/>
+			<select name="choice" id='choice' >
+				<option value="b">中译英</option>
+				<option value="a">英译中</option>
+				<option value="c">中译日</option>
+				<option value="d">中译韩</option>
+			</select>
+			<span id="sub" onclick="Sub(this)" style="cursor:pointer">一键翻译</span>
+		</form>
+	</div>
+	<div id="output">
+	</div>
+</body>
+</html>

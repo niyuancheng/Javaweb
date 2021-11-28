@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>单词查询页面</title>
+<link href="bootstrap-3.4.1-dist/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<style>
+	button{
+		background-color: #f4511e;
+		border-radius:8px;
+		width:120px;
+		height:45px;
+		transition: all 0.5s;
+		color:white;
+	}
+	
+	button span {
+	  cursor: pointer;
+	  display: inline-block;
+	  position: relative;
+	  transition: 0.5s;
+	}
+	
+	button span:after {
+	  content: '»';
+	  position: absolute;
+	  opacity: 0;
+	  top: 0;
+	  right: -20px;
+	  transition: 0.5s;
+	}
+	
+	button:hover span {
+	  padding-right: 25px;
+	}
+	
+	button:hover span:after {
+	  opacity: 1;
+	  right: 0;
+	}
+	
+	
+	#word{
+		width:400px;
+		height:40px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+	#choice{
+		width:100px;
+		height:40px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border-radius:8px;
+	}
+	#choice option{
+		font-size:20px;
+		font-style:"楷体";
+	}
+	ul{
+	  	list-style-type: none;
+	  	margin: 0;
+	  	padding: 0;
+	  	overflow: hidden;
+	  	background-color: #333;
+	}
+	
+	li {
+	  float: left;
+	  border-right:1px solid #bbb;
+	}
+	
+	li:last-child {
+	  float:right;
+	  border-right: none;
+	}
+	
+	li a {
+	  display: block;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	}
+	
+	li a:hover:not(.active) {
+	  background-color: #111;
+	}
+	
+	.active {
+	  background-color: #4CAF50;
+	}
+</style>
+</head>
+<body>
+	<div class='navigation'>
+		<ul>
+			<li><a href="index.html" class="active">诺亚词典</a></li>
+			<li><a href="translation.html">诺亚翻译</a></li>
+			<li><a href='friend.jsp'>朋友圈</a></li>
+			<li><a href='#'>关于我们</a></li>
+		</ul>
+	</div>
+	<div class='introduction'>
+		<h1 style='text-align:center'>诺亚的四六级词汇查询</h1>
+	</div>
+	<br/><br/>
+	<div style='text-align:center' class="search">
+		<form method='get' action='demo.jsp' >
+			<select name="choice" id='choice'>
+				<option value="a">英译中</option>
+				<option value="b">中译英</option>
+				<option value="c">中译日</option>
+				<option value="d">中译韩</option>
+			</select>	
+			<input type='text' placeholder='请输入你想要查询的内容' name='word' id='word' />
+			<button id='click'><span>查  询</span></button>
+		</form>
+	</div>
+</body> 
+</html>
